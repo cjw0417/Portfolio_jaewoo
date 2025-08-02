@@ -1,0 +1,710 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    position: fixed;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 9s ease-out;
+}
+
+.main_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #3F3F3F;
+}
+
+.main_box .box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160px;
+    height: 160px;
+    background-color: #0086cc;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transform-origin: center center;
+    box-sizing: border-box;
+    will-change: transform, width, height;
+    animation: boxExpand 3s ease-in-out forwards, fadeOut 3s ease-out 5s forwards;
+}
+
+@keyframes boxExpand {
+    0% {
+        width: 160px;
+        height: 160px;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    5% {
+        width: 300px;
+        height: 300px;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    10% {
+        width: 564px;
+        height: 600px;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    /* 40%, 50% {
+        width: 564px;
+        height: 600px;
+        transform: translate(-50%, -50%) rotate(0deg);  
+    } */
+
+    60%,
+    65% {
+        width: 564px;
+        height: 450px;
+        transform: translate(-50%, -50%) rotate(0deg);
+        background-color: #FFFFFF;
+        border: 2px solid #DEDEDE;
+    }
+
+    70% {
+        width: 564px;
+        height: 120px;
+        transform: translate(-50%, -50%) rotate(0deg);
+        background-color: #FFFFFF;
+        border: 2px solid #DEDEDE;
+    }
+
+    80% {
+        width: 200px;
+        height: 120px;
+        transform: translate(-50%, -50%) rotate(0deg);
+        background-color: #FFFFFF;
+        border: 2px solid #DEDEDE;
+    }
+
+    100% {
+        width: 200px;
+        height: 120px;
+        transform: translate(-50%, -50%) rotate(0deg);
+        background-color: #FFFFFF;
+    }
+}
+
+/* 꼭지점에서 나오는 라인들 */
+.main_box .line {
+    position: absolute;
+    background-color: #0086cc;
+    opacity: 0;
+}
+
+.main_box .line.top-left,
+.main_box .line.top-right,
+.main_box .line.bottom-left,
+.main_box .line.bottom-right {
+    width: 0;
+    height: 1px;
+}
+
+/* 개별 라인 위치 설정 */
+.main_box .line.top-left {
+    top: 0;
+    left: 0;
+    transform: rotate(180deg);
+    transform-origin: left;
+    animation: drawLine 3.5s ease 0.3s forwards;
+}
+
+.main_box .line.top-right {
+    top: 0;
+    right: 0;
+    transform: rotate(90deg);
+    transform-origin: right;
+    animation: drawLine 3.5s ease 0.3s forwards;
+}
+
+.main_box .line.bottom-left {
+    bottom: 0;
+    left: 0;
+    transform: rotate(-270deg);
+    transform-origin: left;
+    animation: drawLine 3.5s ease 0.3s forwards;
+}
+
+.main_box .line.bottom-right {
+    bottom: 0;
+    right: 0;
+    transform: rotate(-180deg);
+    transform-origin: right;
+    animation: drawLine 3.5s ease 0.3s forwards;
+}
+
+/* 라인 애니메이션 */
+@keyframes drawLine {
+    0% {
+        width: 0;
+        opacity: 1;
+    }
+
+    60% {
+        width: 100vw;
+        opacity: 1;
+    }
+
+    100% {
+        width: 0;
+        opacity: 1;
+    }
+}
+
+/* 꼭지점 */
+.main_box .corner {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #0086cc;
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+    animation: showCorner 3s ease 0.7s forwards;
+}
+
+/* 꼭지점 위치 */
+.main_box .corner.top-left {
+    top: -7px;
+    left: -7px;
+}
+
+.main_box .corner.top-right {
+    top: -7px;
+    right: -7px;
+}
+
+.main_box .corner.bottom-left {
+    bottom: -7px;
+    left: -7px;
+}
+
+.main_box .corner.bottom-right {
+    bottom: -7px;
+    right: -7px;
+}
+
+@keyframes showCorner {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(45deg);
+    }
+
+    40% {
+        opacity: 1;
+        transform: scale(1) rotate(45deg);
+    }
+}
+
+/* 텍스트 */
+.main_box .text-content {
+    position: relative;
+    top: 35%;
+    left: 60%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    font-size: 56px;
+    color: black;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* 박스가 중간 크기가 될 때 텍스트가 나타남 */
+.main_box .box.mid-size .text-content {
+    opacity: 1;
+}
+
+.box_text1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 1100px) {
+    .main_box .box {
+        width: 80px;
+        height: 80px;
+        animation: boxExpand 3s ease-in-out forwards, fadeOut 3s ease-out 4s forwards;
+
+    }
+
+    @keyframes boxExpand {
+        0% {
+            width: 80px;
+            height: 80px;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        5% {
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        15% {
+            width: 374px;
+            height: 450px;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        60% {
+            width: 374px;
+            height: 450px;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        80% {
+            width: 374px;
+            height: 300px;
+            transform: translate(-50%, -50%) rotate(0deg);
+            background-color: #FFFFFF;
+            border: 2px solid #DEDEDE;
+        }
+
+        90% {
+            width: 374px;
+            height: 120px;
+            transform: translate(-50%, -50%) rotate(0deg);
+            background-color: #FFFFFF;
+            border: 2px solid #DEDEDE;
+        }
+
+        95% {
+            width: 200px;
+            height: 120px;
+            transform: translate(-50%, -50%) rotate(0deg);
+            background-color: #FFFFFF;
+            border: 2px solid #DEDEDE;
+        }
+
+        100% {
+            width: 200px;
+            height: 120px;
+            transform: translate(-50%, -50%) rotate(0deg);
+            background-color: #FFFFFF;
+        }
+    }
+
+    /* 꼭지점 */
+    .main_box .corner {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #0086cc;
+        transform: scale(0) rotate(45deg);
+        opacity: 0;
+        animation: showCorner 4s ease 1.5s forwards;
+    }
+
+    /* 꼭지점 위치 */
+    .main_box .corner.top-left {
+        top: -5px;
+        left: -5px;
+    }
+
+    .main_box .corner.top-right {
+        top: -5px;
+        right: -5px;
+    }
+
+    .main_box .corner.bottom-left {
+        bottom: -5px;
+        left: -5px;
+    }
+
+    .main_box .corner.bottom-right {
+        bottom: -5px;
+        right: -5px;
+    }
+
+    /* 텍스트 */
+    .main_box .text-content {
+        position: relative;
+        top: 35%;
+        left: 60%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+        text-align: left;
+        font-size: 56px;
+        color: black;
+        opacity: 0;
+        transition: opacity 2s ease;
+    }
+
+    /* 박스가 중간 크기가 될 때 텍스트가 나타남 */
+    .main_box .box.mid-size .text-content {
+        opacity: 1;
+    }
+
+    .main_box .box_text1 {
+        font-size: 16px;
+        font-weight: 400;
+        margin-top: 20px;
+    }
+
+    .main_box .box_text2 {
+        font-size: 30px;
+        font-weight: 900;
+    }
+
+}
+
+@media only screen and (max-width: 860px) {
+    .main_box .box {
+        width: 80px;
+        height: 80px;
+    }
+
+    @keyframes boxExpand {
+        0% {
+            width: 80px;
+            height: 80px;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        5% {
+            width: 150px;
+            height: 150px;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        15% {
+            width: 200px;
+            height: 350px;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        60% {
+            width: 200px;
+            height: 350px;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        80% {
+            width: 200px;
+            height: 230px;
+            transform: translate(-50%, -50%) rotate(0deg);
+            border: 2px solid #DEDEDE;
+        }
+
+        90% {
+            width: 200px;
+            height: 100px;
+            transform: translate(-50%, -50%) rotate(0deg);
+            border: 2px solid #DEDEDE;
+        }
+
+        95% {
+            width: 200px;
+            height: 80px;
+            transform: translate(-50%, -50%) rotate(0deg);
+            border: 2px solid #DEDEDE;
+        }
+
+        100% {
+            width: 200px;
+            height: 80px;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+    }
+
+    @keyframes logoChange {
+        0% {
+            background: url('../images/logo_whitesm.png') no-repeat center center;
+            transform: rotate(-45deg);
+        }
+
+        10% {
+            background: url('../images/logo_whitesm.png') no-repeat center center;
+            transform: rotate(-45deg);
+        }
+
+        30% {
+            background: url('../images/logo_whitesm.png') no-repeat bottom 30px left 30px;
+            transform: rotate(0deg);
+        }
+
+        50% {
+            background: url('../images/logo_blacksm.png') no-repeat bottom 30px left 30px;
+            transform: rotate(0deg);
+        }
+
+        70% {
+            background: url('../images/logo_blacksm.png') no-repeat bottom 30px left 30px;
+            transform: rotate(0deg);
+        }
+
+        100% {
+            background: url('../images/logo_blacksm.png') no-repeat center center;
+            transform: rotate(0deg);
+        }
+    }
+
+    /* 꼭지점 */
+    .main_box .corner {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: #0086cc;
+        transform: scale(0) rotate(45deg);
+        opacity: 0;
+        animation: showCorner 3s ease 1s forwards;
+    }
+
+    /* 텍스트 */
+    /* 박스가 중간 크기가 될 때 텍스트가 나타남 */
+    .main_box .box.mid-size .text-content {
+        opacity: 1;
+    }
+
+    .main_box .box_text1 {
+        font-size: 2rem;
+        font-weight: 400;
+        margin-top: 20px;
+    }
+
+    .main_box .box_text2 {
+        font-size: 22px;
+        font-weight: 900;
+    }
+
+}
+
+/* 그리드 */
+.page-wrap {
+    position: relative;
+    height: 100vh;
+    padding: 2vw;
+    background-color: #000;
+}
+
+.contbox {
+    position: absolute;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.contbox.info {
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background-color: #3F3F3F;
+    color: #fff;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.contbox.info .info_tit {
+    width: auto;
+    font-size: 1.6rem;
+    margin: 0 auto;
+}
+
+.contbox.info .info_grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(30px, 50px));
+    gap: 10px;
+    justify-content: center;
+    margin: 5vh 0;
+}
+
+.contbox.info .info_grid .cell {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: #00d2ff;
+    border-radius: 0.5vw;
+    animation: wave 2s infinite ease-in-out;
+}
+
+.contbox.info .continue_info {
+    font-size: 1.6rem;
+    position: relative;
+}
+
+.contbox.info .continue_info.up{display: none;}
+
+.contbox.info .continue_info::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    background-size: cover;
+    animation: wave2 2s infinite ease-in-out;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+        background: #00d2ff;
+        box-shadow: 0 0 5px #00d2ff66;
+    }
+    50% {
+        transform: translateY(-15px);
+        background: #0086cc;
+        box-shadow: 0 0 15px #0086ccaa;
+    }
+}
+
+@keyframes wave2 {
+    0%, 100% {
+        transform: translateY(5px);
+        background: #00d2ff;
+        box-shadow: 0 0 5px #00d2ff66;
+    }
+    50% {
+        transform: translateY(-5px);
+        background: #0086cc;
+        box-shadow: 0 0 5px #0086ccaa;
+    }
+}
+
+.about_me,
+.projects,
+.selfbank,
+.online1,
+.online2,
+.white,
+.gray {
+    opacity: 0;
+    transform: translateY(50px);
+    position: absolute;
+    transition: all 0.8s ease-in-out;
+}
+
+.about_me {
+    left: 24%;
+    top: 10px;
+    width: 30%;
+    height: 37.5%;
+    background-color: #A0A0FF;
+}
+
+.projects {
+    left: 54.5%;
+    top: 10px;
+    width: 45%;
+    height: 45%;
+    background-color: #E0E0E0;
+}
+
+.selfbank {
+    left: 10px;
+    top: 39%;
+    width: 34%;
+    height: 54%;
+    background-color: #7F6CEB;
+}
+
+.online1 {
+    left: 35%;
+    top: 60%;
+    width: 19%;
+    height: 33%;
+    background-color: #5A3DBE;
+}
+
+.online2 {
+    left: 54.5%;
+    top: 46.5%;
+    width: 23%;
+    height: 46.5%;
+    background-color: #19A1A1;
+}
+
+.white {
+    left: 78%;
+    top: 46.5%;
+    width: 21.5%;
+    height: 20%;
+    background-color: rgba(205, 175, 175, 0.857);
+    color: black;
+}
+
+.gray {
+    left: 78%;
+    top: 67.5%;
+    width: 21.5%;
+    height: 25.5%;
+    background-color: #B0B0B0;
+}
+
+@media (max-width: 1300px) {
+    .contbox.info .info_grid {
+        grid-template-columns: repeat(4, minmax(20px, 30px));
+        gap: 8px;
+    }
+
+    .chatbot,
+    .hana,
+    .selfbank,
+    .online1,
+    .online2,
+    .white,
+    .gray {
+        width: 45%;
+        height: 25%;
+    }
+
+    .hana,
+    .online2 {
+        left: 50%;
+    }
+
+    .online1,
+    .white {
+        left: 5%;
+    }
+
+    .gray {
+        left: 50%;
+    }
+}
+
+@media (max-width: 600px) {
+    .contbox.info .info_grid {
+        grid-template-columns: repeat(4, minmax(10px, 15px));
+        gap: 6px;
+    }
+
+    .chatbot,
+    .hana,
+    .selfbank,
+    .online1,
+    .online2,
+    .white,
+    .gray {
+        width: 45%;
+        height: 25%;
+    }
+
+    .hana,
+    .online2 {
+        left: 50%;
+    }
+
+    .online1,
+    .white {
+        left: 5%;
+    }
+
+    .gray {
+        left: 50%;
+    }
+}
