@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>조재우 포트폴리오</title>
+  <!-- Swiper CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      overflow: hidden;
+    }
+    .swiper {
+      height: 100vh;
+    }
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #fff;
+    }
+    .intro { background: #1e1e1e; }
+    .about { background: #3e3e3e; }
+    .projects { background: #5e5e5e; }
+    .process { background: #7e7e7e; }
+    .contact { background: #9e9e9e; }
+  </style>
+</head>
+<body>
+
+  <!-- main -->
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide intro">Intro</div>
+      <div class="swiper-slide about">About Me</div>
+      <div class="swiper-slide projects">Projects</div>
+      <div class="swiper-slide process">Work Process</div>
+      <div class="swiper-slide contact">Contact</div>
+    </div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+  <!-- // main -->
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      direction: 'vertical',
+      slidesPerView: 1,
+      mousewheel: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      speed: 800,
+    });
+  </script>
+</body>
+</html>
