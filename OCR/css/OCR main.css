@@ -27,7 +27,7 @@ body{font-size: 15px; color: #000;}
 .fixed-btn .btn-new .btn.blue{background: #476eff; color: #fff;}
 .fixed-btn .btn-new .btn + .btn{margin-top: 8px; margin-left: 0;}
 
-.pop_wrap .popup .btn_close{position: absolute; z-index: 12; width: 24px; height: 24px; top: 20px; right: 20px; display: block; background: url(/OCR/img/close.png) no-repeat center center; border: none; background-size: 20px; color: transparent; overflow: hidden;}
+.pop_wrap .popup .btn_close{position: absolute; z-index: 12; width: 24px; height: 24px; top: 20px; right: 20px; display: block; background: url(/Portfolio_jaewoo/OCR/img/close.png) no-repeat center center; border: none; background-size: 20px; color: transparent; overflow: hidden;}
 .pop_wrap .popup .btn_close span{display: inline-block; width: 0; height: 0; line-height: 0; text-indent: -99999px;}
 
 /* 이중팝업 display: none */
