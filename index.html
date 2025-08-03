@@ -470,7 +470,7 @@
                 const extIndex = originalSrc.lastIndexOf('.');
                 const mobileSrc = originalSrc.slice(0, extIndex) + '_mo' + originalSrc.slice(extIndex);
 
-                img.setAttribute('data-original-src', originalSrc); // PC용 src 저장
+                img.setAttribute('data-original-src', originalSrc); 
                 img.src = mobileSrc;
             } else {
                 // PC로 돌아가면 원래 이미지로 복원

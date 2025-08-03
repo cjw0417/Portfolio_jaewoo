@@ -42,8 +42,8 @@ body.lock-scroll {
 /* GNB */
 .gnb {
   position: fixed;
-  top: 30px;
-  right: 30px;
+  top: 20px;
+  right: 20px;
   z-index: 1000;
   display: none;
 }
@@ -300,7 +300,7 @@ body.lock-scroll {
 /* about */
 .about {
   flex-direction: row;
-  background: #ffffff;
+  background: #f0f4f8;
   color: #222;
   padding: 2rem 10rem;
   font-family: 'Noto Sans KR', sans-serif;
@@ -640,7 +640,7 @@ body.lock-scroll {
   justify-content: center;
   height: 100%;
   padding: 10rem 2rem;
-  background: #fefefe;
+  background: #f0f4f8;
 }
 
 .contact h2{
@@ -798,9 +798,15 @@ body.lock-scroll {
     display: none;
   }
   
+  .gnb{
+    top: 10px;
+    right: 10px;
+  }
+
   .gnb ul{
     gap: 10px;
     padding: 5px 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   .gnb li a{
     font-size: 12px;
