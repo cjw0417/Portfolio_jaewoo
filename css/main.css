@@ -89,12 +89,8 @@ body {
   overflow: hidden;
   white-space: nowrap;
   border-right: 2px solid #00c896;
-}
-
-.typing.active {
   animation: typing 1s steps(20), blink 1.5s step-end infinite;
-  width: auto;
-  display: auto;
+
 }
 
 @keyframes typing {
@@ -116,11 +112,7 @@ body {
   color: #444;
   transform: translateY(20px);
   transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.intro-sub.active {
-  opacity: 1;
-  transform: translateY(0);
+  animation: fadeInUp 1s ease forwards;
 }
 
 .scroll-down {
@@ -132,12 +124,6 @@ body {
   transition: opacity 0.s ease, transform 0.6s ease;
   animation: fadeInUp 1s ease forwards;
   animation-delay: 3.2s;
-}
-
-.tech-tags.active,
-.scroll-down.active {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .mouse {
@@ -257,7 +243,11 @@ body {
 .about-details ul {
   padding-left: 1.2rem;
   list-style: disc;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-details ul li{
+  margin-bottom: 0.5rem;
 }
 
 .skill-inline-list {
@@ -375,6 +365,7 @@ body {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1rem;
+  justify-content: center;
 }
 
 .tags span {
@@ -385,12 +376,174 @@ body {
   border-radius: 999px;
 }
 
-/* process */
-.process {
-  background: #ffffff;
+/* NH Pay 다국어 슬라이드 */
+.project-card.with-mockups {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.project-card.with-mockups .card-image-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.project-card.with-mockups .main-preview {
+  position: relative;
+  width: 300px;
+  height: 640px;
+}
+
+.project-card.with-mockups .screen-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.nhpay-mockup-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.nhpay-mockup-swiper .swiper-wrapper,
+.nhpay-mockup-swiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide.nhpay_slide{
+  padding: 1rem;
+}
+
+.nhpay-mockup-swiper .swiper-slide img {
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card.with-mockups .phone-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.project-card.with-mockups .mockup-previews {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-card.with-mockups .mockup-previews img {
+  width: 150px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+}
+
+.project-card.with-mockups .mockup-previews img:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.project-card.with-mockups .card-content {
+  max-width: 800px;
+  text-align: center;
+  padding: 1rem 1rem 2rem;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .project-card.with-mockups .card-image-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-card.with-mockups .mockup-previews {
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .project-card.with-mockups .mockup-previews img {
+    width: 100px;
+  }
+
+  .project-card.with-mockups .main-preview {
+    width: 240px;
+    height: 480px;
+  }
+
+  .project-card.with-mockups .screen-mask {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /* contact */
 .contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 10rem 2rem;
   background: #fefefe;
+}
+
+.contact h2{
+  margin-bottom: 2rem;
+}
+
+.contact-container {
+  text-align: center;
+  max-width: 600px;
+}
+
+.contact-message {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.contact-list li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-list a {
+  color: #0078ff;
+  text-decoration: none;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+.thanks {
+  font-size: 1rem;
+  color: #888;
+  margin-top: 2rem;
 }
