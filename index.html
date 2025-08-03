@@ -17,24 +17,36 @@
         <ul>
             <li><a href="#" data-slide="1">ABOUT</a></li>
             <li><a href="#" data-slide="2">PROJECTS</a></li>
-            <li><a href="#" data-slide="3">PROCESS</a></li>
-            <li><a href="#" data-slide="4">CONTACT</a></li>
+            <li><a href="#" data-slide="3">CONTACT</a></li>
         </ul>
     </nav>
 
     <!-- 스와이퍼 -->
     <div class="swiper">
         <div class="swiper-wrapper">
+            <div class="preloader">
+                <div class="terminal">
+                    <p>> Initializing Portfolio...</p>
+                    <p>> Loading HTML, CSS, JavaScript...</p>
+                    <p>> Launching Interface 🚀</p>
+                </div>
+            </div>
             <div class="swiper-slide intro">
                 <div class="intro-inner">
                     <h1 class="main-title">
                         <span class="typing">2025 Portfolio</span>
                     </h1>
-
+            
                     <p class="intro-sub">디테일을 설계하고, 흐름을 완성하는 퍼블리셔</p>
-
-                    <div class="scroll-down">
-                        <span>Scroll Down</span>
+            
+                    <ul class="intro-info">
+                        <li>💼 경력: 미디어포스얼라이언스 퍼블리셔 4년차</li>
+                        <li>🛠️ 기술: HTML · CSS · JavaScript · Vue.js</li>
+                        <li>📌 주요 프로젝트: NH Pay 다국어 / 신한카드 UI 개선</li>
+                    </ul>
+            
+                    <div class="scroll-down scroll-message">
+                        <span>스크롤하며 경력을 살펴보세요 :)</span>
                         <div class="mouse">
                             <div class="wheel"></div>
                         </div>
@@ -224,6 +236,18 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // 로딩
+        window.addEventListener('load', () => {
+            const preloader = document.querySelector('.preloader');
+            const intro = document.querySelector('.intro');
+
+            setTimeout(() => {
+            preloader.style.display = 'none';
+            intro.style.opacity = '1';
+            intro.style.pointerEvents = 'auto';
+            }, 2800);
+        });
+
         // GNB 숨김
         const gnb = document.querySelector('.gnb');
         gnb.style.display = 'none';
