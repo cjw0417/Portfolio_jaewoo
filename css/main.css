@@ -299,6 +299,7 @@ body.lock-scroll {
 
 /* about */
 .about {
+  flex-direction: row;
   background: #ffffff;
   color: #222;
   padding: 2rem 10rem;
@@ -324,12 +325,6 @@ body.lock-scroll {
   font-weight: 600;
 }
 
-.about-text {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
 .about-text h3 {
   font-size: 1.4rem;
   line-height: 1.6;
@@ -352,7 +347,6 @@ body.lock-scroll {
 }
 
 .about-details {
-  max-width: 900px;
   font-size: 1rem;
   line-height: 1.7;
   color: #333;
@@ -375,6 +369,10 @@ body.lock-scroll {
 
 .about-details ul li{
   margin-bottom: 0.5rem;
+}
+
+.about-details ul li:last-of-type{
+  margin-bottom: 0;
 }
 
 .skill-inline-list {
@@ -688,33 +686,57 @@ body.lock-scroll {
 }
 
 /* 분기 */
-@media (max-width: 1024px) {
+@media (max-width: 1180px) {
   .about{
-    padding: 4rem 6rem;
+    flex-direction: column;
+    padding: 3rem 3rem;
     height: auto;
   }
   .about-text{
-    display: none;
     width: auto;
-    max-width: 300px;
+    font-size: 1.4rem;
   }
+
   .about-text h3{
     font-size: 1rem;
   }
+
+  .section-title{
+    font-size: 1.6rem;
+  }
+
+  .section-title.abme{
+    margin: 32px 0 16px 0;
+  }
+
+  .about-details{
+    padding: 0;
+  }
+  
   .about-text p{
     font-size: 0.8rem;
   }
   .about-details h3.section-subtitle{
     font-size: 1rem;
   }
+
   .about-details ul{
     font-size: 0.8rem;
     padding-left: 0;
   }
+
+  .about-text .strong{
+    font-size: 1rem;
+  }
+
   .skill-inline-list{
     padding-left: 0;
     gap: 0;
   }
+}
+
+@media (max-width: 1024px) {
+  
   .swiper-wrapper{
     height: auto;
   }
@@ -810,6 +832,10 @@ body.lock-scroll {
     height: auto;
   }
 
+  .about-details{
+    margin: 0 2rem;
+  }
+
   .section-title.abme{
     margin-right: 1rem;
     margin-bottom: 1rem;
@@ -817,17 +843,29 @@ body.lock-scroll {
   }
 
   .about-text{
-    display: none;
     width: auto;
-    max-width: 300px;
+    margin: 0 20px;
   }
+  
   .about-text h3{
     font-size: 1rem;
+    margin-bottom: 0;
   }
+  
   .about-text p{
     font-size: 0.8rem;
+    display: none;
   }
 
+  .about-text .strong{
+    display: block;
+    margin-top: 16px;
+    font-size: 14px;
+    padding-left: 10px;
+    border-left: 1px solid #00c876;
+    
+  }
+  
   .about-details h3.section-subtitle{
     font-size: 14px;
     margin-top: 0;
