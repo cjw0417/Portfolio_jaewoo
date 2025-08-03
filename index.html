@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <!-- 마우스 -->
+    <div class="custom-cursor"></div>
+
     <!-- GNB -->
     <nav class="gnb">
         <ul>
@@ -203,15 +206,15 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        </div>
+                    </div>
+                </div>
             </div>
             <div class="swiper-slide contact">
                 <div class="contact-container">
                     <h2 class="section-title">CONTACT</h2>
                     <p class="contact-message">
                         새로운 환경에서의 도전을 기다립니다.<br />
-                        퍼블리셔 <strong>조재우</strong>에게 연락 주세요
+                        퍼블리셔 <strong>조재우</strong>에게 연락 주세요.
                     </p>
             
                     <ul class="contact-list">
@@ -224,7 +227,7 @@
                         </li>
                     </ul>
             
-                    <p class="thanks">👋 방문해주셔서 감사합니다!</p>
+                    <p class="thanks">👋 감사합니다.</p>
                 </div>
             </div>
         </div>
@@ -236,6 +239,25 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // 마우스
+        const cursor = document.querySelector('.custom-cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.left = e.clientX + 'px';
+        });
+
+        const hoverTargets = document.querySelectorAll('a, button, .clickable');
+
+        hoverTargets.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
+
         // 로딩
         window.addEventListener('load', () => {
             const preloader = document.querySelector('.preloader');
@@ -392,11 +414,42 @@
         new Swiper('.nhpay-mockup-swiper', {
             loop: true,
             autoplay: {
-                delay: 1600,
+                delay: 1200,
                 disableOnInteraction: false,
             },
             effect: 'fade'
         });
+
+        // 480px에서 이미지 변경
+        function switchMockupImagesForMobile() {
+            const isMobile = window.innerWidth <= 480;
+            const images = document.querySelectorAll('.nhpay-mockup-swiper .swiper-slide img');
+
+            images.forEach((img) => {
+            const originalSrc = img.getAttribute('data-original-src') || img.src;
+
+            if (isMobile) {
+                // 기존 경로에서 _mo 확장 붙인 경로로 변경
+                const extIndex = originalSrc.lastIndexOf('.');
+                const mobileSrc = originalSrc.slice(0, extIndex) + '_mo' + originalSrc.slice(extIndex);
+
+                img.setAttribute('data-original-src', originalSrc); // PC용 src 저장
+                img.src = mobileSrc;
+            } else {
+                // PC로 돌아가면 원래 이미지로 복원
+                const savedSrc = img.getAttribute('data-original-src');
+                if (savedSrc) {
+                img.src = savedSrc;
+                }
+            }
+            });
+        }
+
+        // 초기 실행
+        switchMockupImagesForMobile();
+
+        // 리사이즈 시 다시 적용
+        window.addEventListener('resize', switchMockupImagesForMobile);
     </script>
 </body>
 
