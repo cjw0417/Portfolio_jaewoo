@@ -8,7 +8,7 @@ body {
   cursor: none;
 }
 
-*{
+a{
   cursor: none;
 }
 
@@ -32,10 +32,11 @@ body.lock-scroll {
   transition: width 0.2s ease, height 0.2s ease, background-color 0.3s ease;
 }
 
-/* 클릭 가능한 요소 위에서 확장 */
 .custom-cursor.hover {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
+  background-color: #126953; 
+
 }
 
 /* GNB */
@@ -595,7 +596,7 @@ body.lock-scroll {
   padding: 1rem 1rem 2rem;
 }
 
-/* 반응형 */
+/* 분기 */
 @media (max-width: 1000px) {
   .gnb ul{
     gap: 10px;

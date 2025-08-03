@@ -28,6 +28,7 @@
     <!-- 스와이퍼 -->
     <div class="swiper">
         <div class="swiper-wrapper">
+            <!-- 로딩 애니메이션 -->
             <div class="preloader">
                 <div class="terminal">
                     <p>> Initializing Portfolio...</p>
@@ -35,6 +36,9 @@
                     <p>> Launching Interface 🚀</p>
                 </div>
             </div>
+            <!-- // 로딩 애니메이션 -->
+
+            <!-- intro -->
             <div class="swiper-slide intro">
                 <div class="intro-inner">
                     <h1 class="main-title">
@@ -57,6 +61,9 @@
                     </div>
                 </div>
             </div>
+            <!-- // intro -->
+
+            <!-- about -->
             <div class="swiper-slide about">
                 <h2 class="section-title abme">ABOUT ME</h2>
             
@@ -93,7 +100,9 @@
                     </ul>
                 </div>
             </div>
+            <!-- // about -->
 
+            <!-- project -->
             <div class="swiper-slide projects">
                 <h2 class="section-title">PROJECTS</h2>
 
@@ -213,6 +222,9 @@
                     </div>
                 </div>
             </div>
+            <!-- // project -->
+
+            <!-- contact -->
             <div class="swiper-slide contact">
                 <div class="contact-container">
                     <h2 class="section-title">CONTACT</h2>
@@ -246,6 +258,7 @@
                     <p class="thanks">감사합니다.</p>
                 </div>
             </div>
+            <!-- // contact -->
         </div>
         <!-- Pagination -->
         <div class="swiper-pagination"></div>
@@ -314,7 +327,7 @@
         });
 
         let innerSwiper = null;
-        const projectsSlideIndex = 2; // projects 슬라이드 인덱스
+        const projectsSlideIndex = 2;
         let wheelTimeout = null; // 휠 이벤트 쓰로틀용 변수
 
         // 내부 Swiper 초기화 함수
@@ -343,10 +356,10 @@
                 },
             });
 
-            // 내부 swiper 휠 이벤트 직접 제어 (쓰로틀 적용)
+            // 내부 swiper 휠 이벤트 직접 제어
             innerSwiperEl.addEventListener('wheel', function (e) {
                 if (outerSwiper.activeIndex !== projectsSlideIndex) return;
-                if (wheelTimeout) return; // 600ms 딜레이 중이면 무시
+                if (wheelTimeout) return; 
 
                 const deltaY = e.deltaY;
                 if (Math.abs(deltaY) < 30) return; // 휠 감도 임계값
